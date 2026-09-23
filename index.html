@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neram — Kerala Ambience</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<header><div class="brand">Neram ☕</div><nav><a href="#sounds">Sounds</a><a href="#music">Music</a><a href="#about">About</a><button id="adminBtn">Admin</button></nav></header>
+<main>
+<section class="hero"><div class="visual"><div class="stamp">NOW PLAYING</div><div class="big">Neram</div><div>Rain · Chaya · Music · Memories</div></div><div><p class="eyebrow">KERALA AFTER DARK</p><h1>Take a little<br><em>neram.</em></h1><p>Close your eyes. Let the rain, tea-shop chatter and old songs slow everything down.</p><button class="primary" id="start">START AMBIENCE</button></div></section>
+<section id="sounds"><h2>Ambience</h2><div class="presets"><button data-preset="rain">മഴ</button><button data-preset="evening">സന്ധ്യ</button><button data-preset="study">പഠനം</button><button data-preset="night">രാത്രി</button></div><div class="grid" id="soundGrid"></div></section>
+<section id="music"><h2>Music Library</h2><p>Music uploaded by the admin appears here for everyone.</p><div id="songs"></div><div class="player"><button id="play">▶</button><div class="track"><b id="now">Choose a song</b><div class="bar"><i id="progress"></i></div></div><span id="clock">0:00</span><input id="volume" type="range" min="0" max="100" value="70"></div><audio id="audio"></audio></section>
+<section id="about"><h2>About Neram</h2><p>A digital corner inspired by Kerala rain, roadside tea shops, evening conversations and music.</p></section>
+</main><footer>Neram · A little time for yourself. ☕</footer>
+<div id="modal" class="modal"><div class="modalbox"><button class="close">×</button><h2>Admin Login</h2><input id="email" placeholder="Email"><input id="password" type="password" placeholder="Password"><button id="login" class="primary">Login</button><p id="msg"></p><div id="panel" hidden><h3>Upload song</h3><input id="song" type="file" accept="audio/*"><input id="songTitle" placeholder="Song title"><button id="upload" class="primary">Upload</button><div id="adminSongs"></div></div></div></div>
+<script src="app.js"></script></body></html>
