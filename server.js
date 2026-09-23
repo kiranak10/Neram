@@ -2,7 +2,7 @@ const express=require("express"), multer=require("multer"), path=require("path")
 const app=express(),PORT=process.env.PORT||3000;
 const ADMIN_EMAIL=process.env.ADMIN_EMAIL||"admin@neram.local",ADMIN_PASSWORD=process.env.ADMIN_PASSWORD||"change-me";
 const UP=path.join(__dirname,"uploads"),DB=path.join(__dirname,"songs.json"); if(!fs.existsSync(UP))fs.mkdirSync(UP); if(!fs.existsSync(DB))fs.writeFileSync(DB,"[]");
-const upload=multer({dest:UP}); app.use(express.json());app.use(express.static(path.join(__dirname,"public")));app.use("/uploads",express.static(UP));
+const upload=multer({dest:UP}); app.use(express.json());app.use(express.static(__dirname));app.use("/uploads",express.static(UP));
 let tokens=new Set(); const read=()=>JSON.parse(fs.readFileSync(DB));const write=x=>fs.writeFileSync(DB,JSON.stringify(x,null,2));
 app.post("/api/login",(req,res)=>{if(req.body.email===ADMIN_EMAIL&&req.body.password===ADMIN_PASSWORD){let t=crypto.randomBytes(24).toString("hex");tokens.add(t);res.json({ok:true,token:t,message:"Logged in"})}else res.status(401).json({ok:false,message:"Invalid login"})});
 function auth(req,res,next){let t=req.headers.authorization?.replace("Bearer ","");if(!t||!tokens.has(t))return res.status(401).json({message:"Admin login required"});req.token=t;next()}
